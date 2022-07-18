@@ -85,13 +85,11 @@ function Voting() {
     return (
         <>
             <div id="header">
-                {allowedAccess &&
-                    <div>
-                    <a target="_blank" rel="noopener noreferrer" href={'https://ropsten.etherscan.io/address/' + address}>Contract address : {address}</a>
-                    </div>
-                }                    
+           
                 {!allowedAccess &&
-                    <div>You are not allowed to access the application.</div>
+                    <div><p>You are not allowed to access the application.</p>
+                    <a target="_blank" rel="noopener noreferrer" href={'https://ropsten.etherscan.io/address/' + address}>Contract address : {address}</a>
+                    </div>       
                 }
                 <div className="side-right">
                     <Wallet/>

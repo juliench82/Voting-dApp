@@ -126,7 +126,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -150,7 +151,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -199,7 +201,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -212,7 +215,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -225,7 +229,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -261,7 +266,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -292,7 +298,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -389,7 +396,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"voter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"proposalId\",\"type\":\"uint256\"}],\"name\":\"ProposalRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"voter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"proposalId\",\"type\":\"uint256\"}],\"name\":\"Voted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"voterAddress\",\"type\":\"address\"}],\"name\":\"VoterRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"proposalId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"voteCount\",\"type\":\"uint256\"}],\"name\":\"Winning\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"enum Voting.WorkflowStatus\",\"name\":\"previousStatus\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"enum Voting.WorkflowStatus\",\"name\":\"newStatus\",\"type\":\"uint8\"}],\"name\":\"WorkflowStatusChange\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"}],\"name\":\"addProposal\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"addVoter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"endProposalsRegistering\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"endVotingSession\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"getOneProposal\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"voteCount\",\"type\":\"uint256\"}],\"internalType\":\"struct Voting.Proposal\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getResults\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"proposalId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"voteCount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"getVoter\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"isRegistered\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"hasVoted\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"votedProposalId\",\"type\":\"uint256\"}],\"internalType\":\"struct Voting.Voter\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"nextStatus\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"proposals\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"voteCount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"startProposalsRegistering\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"startVotingSession\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_proposalId\",\"type\":\"uint256\"}],\"name\":\"vote\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"voters\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"isRegistered\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"hasVoted\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"votedProposalId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"winningProposalId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"workflowStatus\",\"outputs\":[{\"internalType\":\"enum Voting.WorkflowStatus\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Julien Chevallier\",\"details\":\"Contract module which provides a basic access control mechanism, where there is an account (an owner) that can be granted exclusive access to specific functions. By default, the owner account will be the one that deploys the contract. This module is used through inheritance. It will make available the modifier `onlyOwner`, which can be applied to your functions to restrict their use to the owner.\",\"kind\":\"dev\",\"methods\":{\"addProposal(string)\":{\"details\":\"Only registered voters can add a proposal.\",\"params\":{\"_description\":\": Proposal's description. Emits a {ProposalRegistered} event. Requirements: - `WorkflowStatus` must be at the ProposalsRegistrationStarted state. - `Description` can't be empty. - `Max length` = 50 proposals.\"}},\"addVoter(address)\":{\"details\":\"Only the owner can call the function.\",\"params\":{\"_address\":\": address of the voter. Emits a {VoterRegistered} event. Requirements: - `WorkflowStatus` must be at the RegisteringVoters state. - `voter` cannot be already registered.\"}},\"endProposalsRegistering()\":{\"details\":\"Current status must be RegisteringVoters.  Emits a {WorkflowStatusChange} event.\"},\"endVotingSession()\":{\"details\":\"Current status must be VotingSessionStarted.  Emits a {WorkflowStatusChange} event.\"},\"getOneProposal(uint256)\":{\"details\":\"Only registered voters can call the function.\",\"params\":{\"_id\":\": ID of the proposal.\"},\"returns\":{\"_0\":\"returns the proposal's structure (string: description ,uint256: voteCount).\"}},\"getResults()\":{\"params\":{\"description\":\": string description of the proposal.\",\"proposalId\":\": id of the proposal.\",\"voteCount\":\": Number of votes for a proposal.\"}},\"getVoter(address)\":{\"details\":\"Only registered voters can call the function.\",\"params\":{\"_address\":\": address of the voter.\"},\"returns\":{\"_0\":\"returns the voter's structure (bool: isRegistered, bool: hasVoted, uint256: votedProposalId).\"}},\"nextStatus()\":{\"details\":\"Only owner can call the function. Emits a {WorkflowStatusChange} event.\"},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"startProposalsRegistering()\":{\"details\":\"Current status must be RegisteringVoters.  Emits a {WorkflowStatusChange} event.\"},\"startVotingSession()\":{\"details\":\"Current status must be ProposalsRegistrationEnded.  Emits a {WorkflowStatusChange} event.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"vote(uint256)\":{\"details\":\"Only registered voters can vote. Voters can vote only once.\",\"params\":{\"_proposalId\":\": id of the proposal. Emits a {Voted} event. Requirements: - `WorkflowStatus` must be at the VotingSessionStarted state. - `voter` cannot have already voted.\"}}},\"stateVariables\":{\"winningProposalId\":{\"details\":\"By default this will be set to 0. Public visibility is set to let anyone get the winning proposal ID.\"},\"workflowStatus\":{\"details\":\"By default this will be set to 0 (RegisteringVoters). Public visibility is set to let anyone read the current status of the workflow.\"}},\"title\":\"Voting\",\"version\":1},\"userdoc\":{\"events\":{\"ProposalRegistered(address,uint256)\":{\"notice\":\"Event triggered when Proposals are registered.\"},\"Voted(address,uint256)\":{\"notice\":\"Event triggered when voting is closed.\"},\"VoterRegistered(address)\":{\"notice\":\"Event triggered when voters are registered.\"},\"Winning(uint256,string,uint256)\":{\"notice\":\"Event triggered when votes have been tallied.\"},\"WorkflowStatusChange(uint8,uint8)\":{\"notice\":\"Event triggered when the Workflow Status is modified.\"}},\"kind\":\"user\",\"methods\":{\"addProposal(string)\":{\"notice\":\"Adds a proposal (maximum 50 proposals).\"},\"addVoter(address)\":{\"notice\":\"Adds a voter to the whitelist.\"},\"endProposalsRegistering()\":{\"notice\":\"Owner ends the proposal registration phase.\"},\"endVotingSession()\":{\"notice\":\"Owner ends the voting session.\"},\"getOneProposal(uint256)\":{\"notice\":\"Gets the proposal ID.\"},\"getResults()\":{\"notice\":\"Gets the winning proposal.\"},\"getVoter(address)\":{\"notice\":\"Gets the registered voter structure by address.\"},\"nextStatus()\":{\"notice\":\"Switches to the next workflow status.\"},\"proposals(uint256)\":{\"notice\":\"Returns the state of the workflow Status any time during the voting session.\"},\"startProposalsRegistering()\":{\"notice\":\"Owner starts the proposal registration phase\"},\"startVotingSession()\":{\"notice\":\"Owner starts the voting session.\"},\"vote(uint256)\":{\"notice\":\"Voter can vote for a proposal.\"},\"voters(address)\":{\"notice\":\"Mapping of voters by addresses.\"},\"winningProposalId()\":{\"notice\":\"Returns the winning proposal.\"},\"workflowStatus()\":{\"notice\":\"Returns the status of the workflow at any time.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Voting.sol\":\"Voting\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0xa94b34880e3c1b0b931662cb1c09e5dfa6662f31cba80e07c5ee71cd135c9673\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://40fb1b5102468f783961d0af743f91b9980cf66b50d1d12009f6bb1869cea4d2\",\"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"project:/contracts/Voting.sol\":{\"keccak256\":\"0x9e5baa993e84d682a0bf1aaefaa093282cb839ba74b6b35f6ad81d103b4f57e3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://781ab81407e627c7ca3edd72d455edf92a0b0376ecc26929a9ae9aba941bd27c\",\"dweb:/ipfs/QmRboWUPM6h1XMHvwwWUfux42od4pYhWAyGqLqHD9xibCQ\"]}},\"version\":1}",
@@ -25601,10 +25609,17 @@
       "links": {},
       "address": "0x21962ee8d61ddB604EeA2e1638d9Af9813aABFfc",
       "transactionHash": "0x7c2a7dea8dc2169bf9ced53d382fa25b2ff1bf58de1ff8afa3255d6b4f624e4f"
+    },
+    "1658157924245": {
+      "events": {},
+      "links": {},
+      "address": "0xA13b6dEb8112087f7b2ca2BAbA0c90A00545C35F",
+      "transactionHash": "0xfc4125f0e5b656e4f147fa6b9501e8b2733eac7312e96d4fc4b8c40f3ea5fe7f"
     }
   },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-07-18T14:49:02.660Z",
+  "updatedAt": "2022-07-18T16:48:01.113Z",
+  "networkType": "ethereum",
   "devdoc": {
     "author": "Julien Chevallier",
     "details": "Contract module which provides a basic access control mechanism, where there is an account (an owner) that can be granted exclusive access to specific functions. By default, the owner account will be the one that deploys the contract. This module is used through inheritance. It will make available the modifier `onlyOwner`, which can be applied to your functions to restrict their use to the owner.",

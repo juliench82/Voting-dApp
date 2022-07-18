@@ -1,6 +1,6 @@
 import React from 'react';
-import contractStore from "../stores/contract";
-import {getWorkflowStatusName} from "../helpers/contract";
+import contractStore from "../zustand/contract";
+import {getWorkflowStatusName} from "../utilities/contract";
 
 function WorkflowStatus() {
 

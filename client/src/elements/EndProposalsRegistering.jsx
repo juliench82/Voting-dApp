@@ -1,5 +1,5 @@
 import React from 'react';
-import {endProposalsRegistering} from "../helpers/contract";
+import {endProposalsRegistering} from "../utilities/contract";
 
 function EndProposalsRegistering() {
 

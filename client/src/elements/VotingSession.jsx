@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {getProposals, vote} from "../helpers/contract";
-import walletStore from "../stores/wallet";
+import {getProposals, vote} from "../utilities/contract";
+import walletStore from "../zustand/wallet";
 
 function VotingSession() {
     const [proposals, setProposals] = useState([]);

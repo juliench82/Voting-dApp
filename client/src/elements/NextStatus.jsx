@@ -1,5 +1,5 @@
 import React from 'react';
-import {nextStatus} from "../helpers/contract";
+import {nextStatus} from "../utilities/contract";
 
 function NextStatus() {
 
@@ -9,7 +9,7 @@ function NextStatus() {
 
     return (
         <button className="btn-status" onClick={handleClick}>
-            Get the winning proposal
+            Next Status
         </button>
     );
 }

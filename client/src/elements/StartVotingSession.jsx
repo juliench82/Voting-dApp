@@ -1,5 +1,5 @@
 import React from 'react';
-import {startVotingSession} from "../helpers/contract";
+import {startVotingSession} from "../utilities/contract";
 
 function StartVotingSession() {
 

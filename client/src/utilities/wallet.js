@@ -1,5 +1,5 @@
 import {getPermissions} from "./contract";
-import walletStore from "../stores/wallet";
+import walletStore from "../zustand/wallet";
 
 async function connect() {
     const storeConnect = walletStore.getState().connect;

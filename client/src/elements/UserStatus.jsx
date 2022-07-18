@@ -1,5 +1,5 @@
 import React from 'react';
-import walletStore from "../stores/wallet";
+import walletStore from "../zustand/wallet";
 
 function UserStatus() {
 

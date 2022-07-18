@@ -1,6 +1,6 @@
 import votingContract from '../contracts/Voting.json';
-import contractStore from '../stores/contract';
-import walletStore from '../stores/wallet';
+import contractStore from '../zustand/contract';
+import walletStore from '../zustand/wallet';
 import Web3 from 'web3';
 
 let contractInstance;

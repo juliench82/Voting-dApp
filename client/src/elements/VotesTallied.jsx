@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getResults} from "../helpers/contract";
+import {getResults} from "../utilities/contract";
 
 function VotesTallied() {
     const [winningProposal, setWinningProposal] = useState(null);

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {addProposal, getProposals} from "../helpers/contract";
-import walletStore from "../stores/wallet";
+import {addProposal, getProposals} from "../utilities/contract";
+import walletStore from "../zustand/wallet";
 
 function RegisteringProposals() {
     const [getInput, setInput] = useState('');

@@ -1,5 +1,5 @@
 import React from 'react';
-import {resetBallot} from "../helpers/contract";
+import {resetBallot} from "../utilities/contract";
 
 function ResetBallot() {
     const handleClick = async () => {

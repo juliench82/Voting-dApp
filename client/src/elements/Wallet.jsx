@@ -1,6 +1,6 @@
 import React from 'react';
-import walletStore from '../stores/wallet';
-import {connect, disconnect} from "../helpers/wallet";
+import walletStore from '../zustand/wallet';
+import {connect, disconnect} from "../utilities/wallet";
 
 function Wallet() {
     // Load the data from store

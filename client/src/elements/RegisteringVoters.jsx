@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {setVoter, getVoters} from "../helpers/contract";
-import contractStore from "../stores/contract";
-import walletStore from "../stores/wallet";
+import {setVoter, getVoters} from "../utilities/contract";
+import contractStore from "../zustand/contract";
+import walletStore from "../zustand/wallet";
 
 function RegisteringVoters() {
     const [getInput, setInput] = useState('');

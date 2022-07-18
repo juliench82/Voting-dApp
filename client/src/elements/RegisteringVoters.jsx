@@ -6,9 +6,6 @@ import walletStore from "../zustand/wallet";
 function RegisteringVoters() {
     const [getInput, setInput] = useState('');
     const [getDisabled, setDisabled] = useState(true);
-
-    const {isVoter, isOwner, connected} = walletStore(state => ({ isVoter: state.isVoter, isOwner: state.isOwner, connected: state.connected }));
-
     const {voters} = contractStore(state => ({ voters: state.voters }));
     const addVoters = contractStore.getState().addVoters;
 
@@ -16,7 +13,7 @@ function RegisteringVoters() {
         (async () => {
             addVoters(await getVoters());
         })();
-    }, []);
+    }, );
 
     const handleAddVoter = async () => {
         await setVoter(getInput);
@@ -35,8 +32,6 @@ function RegisteringVoters() {
 
         return /^0x[a-fA-F0-9]{40}$/.test(address);
     }
-
-    let allowedAccess=false;
 
     return (
         <>

@@ -1,6 +1,7 @@
 ### Voting <small>: Voting</small>
 
 Author: Julien Chevallier
+<br>
 
 **Functions**
 
@@ -12,10 +13,7 @@ Only registered voters can add a proposal.
 
 | Name | Type | Description |
 | --- | --- | --- |
-|  _description | string | : Proposal's description. Emits a {ProposalRegistered}
-event. Requirements: - `WorkflowStatus` must be at the
-ProposalsRegistrationStarted state. - `Description` can't be empty. -
-`Max length` = 50 proposals. |
+|  _description | string | : Proposal's description. Emits a {ProposalRegistered} event. Requirements: - `WorkflowStatus` must be at the ProposalsRegistrationStarted state. - `Description` can't be empty. - `Max length` = 50 proposals. |
 
 Returns:
 
@@ -29,9 +27,7 @@ Only the owner can call the function.
 
 | Name | Type | Description |
 | --- | --- | --- |
-|  _address | address | : address of the voter. Emits a {VoterRegistered} event.
-Requirements: - `WorkflowStatus` must be at the RegisteringVoters state.
- - `voter` cannot be already registered. |
+|  _address | address | : address of the voter. Emits a {VoterRegistered} event. Requirements: - `WorkflowStatus` must be at the RegisteringVoters state. - `voter` cannot be already registered. |
 
 Returns:
 
@@ -79,20 +75,6 @@ Returns:
 
 ***
 
-###### getResults
-
-No parameters
-
-Returns:
-
-| Name | Type | Description |
-| --- | --- | --- |
-| proposalId | uint256 | : id of the proposal. |
-| description | string | : string description of the proposal. |
-| voteCount | uint256 | : Number of votes for a proposal. |
-
-***
-
 ###### getVoter
 
 Only registered voters can call the function.
@@ -109,15 +91,19 @@ Returns:
 
 ***
 
-###### nextStatus
+###### getWinningProposalId
 
-Only owner can call the function. Emits a {WorkflowStatusChange} event.
+Only owner can call this function.
 
 No parameters
 
 Returns:
 
-No parameters
+| Name | Type | Description |
+| --- | --- | --- |
+| proposalId | uint256 |  |
+| description | string |  |
+| voteCount | uint256 |  |
 
 ***
 
@@ -154,11 +140,7 @@ Returns:
 
 ###### renounceOwnership
 
-Leaves the contract without owner. It will not be
-possible to call `onlyOwner` functions anymore. Can only be called by
-the current owner. NOTE: Renouncing ownership will leave the contract
-without an owner, thereby removing any functionality that is only
-available to the owner.
+Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.
 
 No parameters
 
@@ -192,6 +174,18 @@ No parameters
 
 ***
 
+###### tallyVotes
+
+Current status must be VotingSessionEnded Emits a {WorkflowStatusChange} event. Requirements: - `WorkflowStatus` must be at the VotingSessionEnded state. - `Max length` = 50 proposals.
+
+No parameters
+
+Returns:
+
+No parameters
+
+***
+
 ###### transferOwnership
 
 Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.
@@ -212,9 +206,7 @@ Only registered voters can vote. Voters can vote only once.
 
 | Name | Type | Description |
 | --- | --- | --- |
-|  _proposalId | uint256 | : id of the proposal. Emits a {Voted} event. Requirements: -
- `WorkflowStatus` must be at the VotingSessionStarted state. - `voter`
-cannot have already voted. |
+|  _proposalId | uint256 | : id of the proposal. Emits a {Voted} event. Requirements: - `WorkflowStatus` must be at the VotingSessionStarted state. - `voter` cannot have already voted. |
 
 Returns:
 

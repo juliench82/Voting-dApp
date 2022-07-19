@@ -6,12 +6,13 @@ function UserStatus() {
     const {isVoter, isOwner} = walletStore(state => ({ isVoter: state.isVoter, isOwner: state.isOwner }));
 
     return (
-        <div className="test">
-            <h3>Your permissions :</h3>
-            <div>{isOwner ? '√' : ' '} Owner</div>
-
-            <div>{isVoter ? '√' : ' '} Voter</div>
+    <div>
+        <h3>Your status(es)</h3>
+        <div className="Status">
+            <div>{isOwner ? '†' : ' '} Owner</div>
+            <div>{isVoter ? '†' : ' '} Voter</div>
         </div>
+    </div>    
     );
 }
 

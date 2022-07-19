@@ -17,26 +17,17 @@ import ProposalsRegistrationEnded from "./ProposalsRegistrationEnded";
 import NotConnected from "./NotConnected";
 import VotingSessionEnded from "./VotingSessionEnded";
 import VotesTallied from "./VotesTallied";
+import ContractAddress from "./ContractAddress"
 
 function Voting() {
     const {isVoter, isOwner, connected} = walletStore(state => ({ isVoter: state.isVoter, isOwner: state.isOwner, connected: state.connected }));
-    const {ready, noContractSet, workflowStatus, address} = contractStore(state => ({ ready: state.ready, noContractSet: state.noContractSet, workflowStatus: state.workflowStatus, address: state.address}));
+    const {ready, workflowStatus} = contractStore(state => ({ ready: state.ready, workflowStatus: state.workflowStatus}));
 
     if (!ready) {
         return (
             <>
                 <div id="main">
                     <p>Please connect your wallet</p>
-                </div>
-            </>
-        );
-    }
-
-    if (noContractSet) {
-        return (
-            <>
-                <div id="main">
-                    No contract set
                 </div>
             </>
         );
@@ -80,22 +71,14 @@ function Voting() {
     return (
         <>
             <div id="header">
-                {allowedAccess &&
-                    <div><p>Welcome to the voting session dApp!</p>
-                    <a target="_blank" rel="noopener noreferrer" href={'https://ropsten.etherscan.io/address/' + address}>Contract address : {address}</a>
-                    </div>       
-                }
                 {!allowedAccess &&
-                    <div><p>You are not allowed to access the application.</p>
-                    <a target="_blank" rel="noopener noreferrer" href={'https://ropsten.etherscan.io/address/' + address}>Contract address : {address}</a>
-                    </div>       
+                    <div><p>Please connect your wallet to get access to the application...</p>
+                    </div>
                 }
                 <div className="side-right">
                     <Wallet/>
                 </div>
-
             </div>
-
             <div id="main">
                 {connected &&
                     <div id="sidebars">
@@ -114,6 +97,7 @@ function Voting() {
                         {allowedAccess &&
                             <div className="sidebar">
                                 <UserStatus/>
+                                <ContractAddress/>
                             </div>
                         }
                     </div>

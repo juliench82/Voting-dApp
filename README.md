@@ -17,6 +17,7 @@ truffle unbox react
 npm install @openzeppelin/contracts --save
 npm install @openzeppelin/test-helpers --save
 npm install @truffle/hdwallet-provider dotenv
+npm install zustand (for state management) - https://www.npmjs.com/package/zustand
 ```
 
 ### Votre Dapp doit permettre : 
@@ -33,11 +34,11 @@ npm install @truffle/hdwallet-provider dotenv
 
 ### Revoir le code sol pour enlever la faille de sécurité
 
-Le calcul de la proposition gagnante se fait désormais au moment du vote
+Le calcul de la proposition gagnante se fait désormais au moment du vote.
 
 ### Une utilisation d'event
 
-client/src/helpers/contract.js
+client/src/utilities/contract.js
 
 ### License
 

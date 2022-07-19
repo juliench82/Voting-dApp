@@ -242,14 +242,6 @@ async function getProposal(proposalId) {
 }
 
 /**
- * Reset the voting session
- * @returns {Promise<*>}
- */
-async function resetBallot() {
-    return await contractInstance.methods.reset().send({from: walletStore.getState().address});
-}
-
-/**
  * Return the human readable text for a workflow status
  *
  * @param workflowStatus
@@ -276,10 +268,10 @@ function getWorkflowStatusName(workflowStatus) {
             status = 'Voting session has ended'
             break;
         case '5':
-            status = 'Votes tallied'
+            status = 'Votes have been tallied'
             break;
         default:
-            status = 'Not a valid status'
+            status = 'This status does not exist'
     }
 
     return status;
@@ -382,6 +374,5 @@ export {
     endVotingSession,
     addProposal,
     getProposals,
-    getResults,
-    resetBallot
+    getResults
 };

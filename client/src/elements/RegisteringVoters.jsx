@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {setVoter, getVoters} from "../utilities/contract";
 import contractStore from "../zustand/contract";
-import walletStore from "../zustand/wallet";
 
 function RegisteringVoters() {
     const [getInput, setInput] = useState('');
     const [getDisabled, setDisabled] = useState(true);
-
-    const {isVoter, isOwner, connected} = walletStore(state => ({ isVoter: state.isVoter, isOwner: state.isOwner, connected: state.connected }));
 
     const {voters} = contractStore(state => ({ voters: state.voters }));
     const addVoters = contractStore.getState().addVoters;
@@ -40,7 +37,7 @@ function RegisteringVoters() {
 
     return (
         <>
-            <div className="test">
+            <div className="central">
             <h2>Add a voter</h2>
             <input className="input-address" value={getInput} onChange={handleInputChange} />
             <button disabled={getDisabled} onClick={handleAddVoter}>Add voter</button>

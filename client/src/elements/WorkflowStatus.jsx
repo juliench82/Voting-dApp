@@ -13,11 +13,11 @@ function WorkflowStatus() {
 
     return (
         <div>
-            <h3>Current status :</h3>
+            <h3>Current state</h3>
             {[0,1,2,3,4,5].map((status)=>{
                 return (
-                    <div key={status}>
-                        {workflowStatus === status.toString() ? '√' : ' '}  {getWorkflowStatusName(status)}
+                    <div className="Status" key={status}>
+                        {workflowStatus === status.toString() ? '†' : ' '}  {getWorkflowStatusName(status)}
                     </div>
                 )
             })}

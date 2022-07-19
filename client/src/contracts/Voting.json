@@ -25740,12 +25740,12 @@
         }
       },
       "links": {},
-      "address": "0x3f65cA07145D5e60A2cB206E7A542ccB4Cb16cAB",
-      "transactionHash": "0xc2973e77cbcbdc2c2ad314eb83e1ba2b6157e76750878cedf67cfdff05dff0f6"
+      "address": "0xBd30019e78E4BcF18786a0602e65663f67A9e261",
+      "transactionHash": "0x09e6c9e9d6b6289b00a310445c390f38707a44c78285d216ed1722fe1d9bc9d8"
     }
   },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-07-18T23:37:09.827Z",
+  "updatedAt": "2022-07-19T01:32:59.435Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Julien Chevallier",

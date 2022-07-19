@@ -26,34 +26,30 @@ function RegisteringProposals() {
     }
 
     return (
-        <>
+        <><div className="central">
             <h2>Registering proposals</h2>
             <input className="input-address" value={getInput} onChange={handleInputChange}/>
             <button disabled={getDisabled} onClick={handleAddProposal}>Add proposal</button>
             {proposals.length > 0 &&
                 <>
-                    <h3>Your proposals</h3>
+                    <h3>Proposals</h3>
                     <table>
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Proposal</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         {proposals.map((proposal, index) =>
                             <tr key={index}>
-                                <td>{index}</td>
+                                <td>ID #{index}</td>
                                 <td>{proposal.description}</td>
                             </tr>
                         )}
                         </tbody>
                     </table>
+
                 </>
             }
 
             {proposals.length === 0 &&
             <div>You don't have any proposal registered yet</div>}
+            </div>
         </>
     )
 }

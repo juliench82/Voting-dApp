@@ -3,7 +3,6 @@ import contractStore from "../zustand/contract";
 
 function ContractAddress() {
     const {address} = contractStore(state => ({address: state.address}));
-    let allowedAccess = false;
 
     return (
     <div>

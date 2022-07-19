@@ -1,10 +1,8 @@
 # Voting-dApp
 
-contract address on Ropsten: https://ropsten.etherscan.io/address/0x7D4775e5BA6803e476041A9C4266a7bC85b24A22
-
 ### Vidéo démo des fonctionnalités de votre Front
 
-https://www.loom.com/share/4bc74243a9ea49288177112bbd5f1b74
+https://www.loom.com/share/eb3eaca2618b41748676608d3ebad007
 
 ### Le lien Github Pages
 
@@ -34,11 +32,7 @@ npm install zustand (for state management) - https://www.npmjs.com/package/zusta
 
 ### Revoir le code sol pour enlever la faille de sécurité
 
-Le calcul de la proposition gagnante se fait désormais au moment du vote.
-
-### Une utilisation d'event
-
-client/src/utilities/contract.js
+require(proposals.length <= 50, 'Max proposals amount reached (x50)'); // security
 
 ### License
 

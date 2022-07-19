@@ -9,18 +9,19 @@ import StartProposalsRegistering from "./StartProposalsRegistering";
 import EndProposalsRegistering from "./EndProposalsRegistering";
 import StartVotingSession from "./StartVotingSession";
 import EndVotingSession from "./EndVotingSession";
-import GetResults from "./GetResults";
+import TallyVotes from "./TallyVotes";
 import RegisteringProposals from "./RegisteringProposals";
 import VotingSession from "./VotingSession";
-import NextStatus from "./NextStatus";
 import ProposalsRegistrationEnded from "./ProposalsRegistrationEnded";
 import NotConnected from "./NotConnected";
 import VotingSessionEnded from "./VotingSessionEnded";
-import VotesTallied from "./VotesTallied";
+import VotesTallied from './VotesTallied';
 import ContractAddress from "./ContractAddress"
+import Whitelist from './Whitelist';
+import ProposalsArray from './ProposalsArray';
 
 function Voting() {
-    const {isVoter, isOwner, connected} = walletStore(state => ({ isVoter: state.isVoter, isOwner: state.isOwner, connected: state.connected }));
+    const {isVoter, isOwner, connected} = walletStore(state => ({ isVoter: state.isVoter, isOwner: state.isOwner, connected: state.connected, voters: state.voters }));
     const {ready, workflowStatus} = contractStore(state => ({ ready: state.ready, workflowStatus: state.workflowStatus}));
 
     if (!ready) {
@@ -33,7 +34,7 @@ function Voting() {
         );
     }
 
-    let displayWorkflowStatus = false, displayNextStatus = false, displayResetBallot = false, displayStartProposalsRegistering = false, displayEndProposalsRegistering = false, displayStartVotingSession = false, displayGetWinner = false, displayEndVotingSession = false, allowedAccess = false;
+    let displayWorkflowStatus = false, displayStartProposalsRegistering = false, displayEndProposalsRegistering = false, displayStartVotingSession = false, displayTallyVotes = false, displayEndVotingSession = false, allowedAccess = false;
 
     if (isOwner || isVoter) {
         displayWorkflowStatus = true;
@@ -41,31 +42,27 @@ function Voting() {
     }
 
     if (isOwner && workflowStatus === '0') {
-        displayNextStatus = false;
         displayStartProposalsRegistering = true;
     }
 
     if (isOwner && workflowStatus === '1') {
-        displayNextStatus = false;
         displayEndProposalsRegistering = true;
     }
 
     if (isOwner && workflowStatus === '2') {
-        displayNextStatus = false;
         displayStartVotingSession = true;
     }
 
     if (isOwner && workflowStatus === '3') {
-        displayNextStatus = false;
         displayEndVotingSession = true;
     }
 
     if (isOwner && workflowStatus === '4') {
-        displayGetWinner = true;
+        displayTallyVotes = true;
     }
 
     if (isOwner && workflowStatus === '5') {
-        displayResetBallot = false;
+
     }
 
     return (
@@ -80,24 +77,24 @@ function Voting() {
                 </div>
             </div>
             <div id="main">
-                {connected &&
-                    <div id="sidebars">
-                        {(displayWorkflowStatus || displayNextStatus || displayStartProposalsRegistering || displayEndProposalsRegistering || displayStartVotingSession || displayEndVotingSession || displayGetWinner || displayResetBallot) &&
+                        {allowedAccess &&
+                            <div className="leftbar">
+                                <UserStatus/>
+                                <ContractAddress/>
+                                <Whitelist/>
+                                <ProposalsArray/>
+                            </div>
+                        }
+                        {connected &&
+                            <div id="sidebars">
+                            {(displayWorkflowStatus || displayStartProposalsRegistering || displayEndProposalsRegistering || displayStartVotingSession || displayEndVotingSession || displayTallyVotes ) &&
                             <div className="sidebar">
                                 {displayWorkflowStatus && <WorkflowStatus/>}
-                                {displayNextStatus && <NextStatus/>}
                                 {displayStartProposalsRegistering && <StartProposalsRegistering/>}
                                 {displayEndProposalsRegistering && <EndProposalsRegistering/>}
                                 {displayStartVotingSession && <StartVotingSession/>}
                                 {displayEndVotingSession && <EndVotingSession/>}
-                                {displayGetWinner && <GetResults/>}
-                                {/*{displayResetBallot && <ResetBallot/>}*/}
-                            </div>
-                        }
-                        {allowedAccess &&
-                            <div className="sidebar">
-                                <UserStatus/>
-                                <ContractAddress/>
+                                {displayTallyVotes && <TallyVotes/>}
                             </div>
                         }
                     </div>

@@ -6,7 +6,6 @@ import Web3 from 'web3';
 let contractInstance;
 
 /**
- * Load the contract with our web3 provider
  *
  * @param web3Provider
  * @return {Promise<void>}
@@ -25,7 +24,6 @@ async function loadContract(web3Provider) {
         deployedNetwork && deployedNetwork.address,
     );
 
-    // As we have the contract we can already get the workflow status
     const workflowStatus = await getWorkflowStatus();
 
 
@@ -102,15 +100,10 @@ async function loadContract(web3Provider) {
         }
     });
 
-    // Save the state
     contractStore.setState({ ready: true, workflowStatus, address: deployedNetwork.address });
 }
 
 /**
- * Get the permissions for an address
- * an store it inside contract store
- *
- * @todo: rename this function as we do more than just getting permissions
  *
  * @param address
  * @return {Promise<*[]>}
@@ -133,7 +126,6 @@ async function getPermissions(address) {
 }
 
 /**
- * Get a voter from contract
  *
  * @param address
  * @return {Promise<{hasVoted: boolean, isRegistered: boolean, votedProposalId}>}
@@ -145,7 +137,6 @@ async function getVoter(address) {
 }
 
 /**
- * Get the workflow status of the voting session
  *
  * @return {Promise<null|*>}
  */
@@ -157,7 +148,6 @@ async function getWorkflowStatus() {
 }
 
 /**
- * Save a voter on the blockchain
  *
  * @param address
  * @return {Promise<*>}
@@ -167,7 +157,6 @@ async function setVoter(address) {
 }
 
 /**
- * Vote for a proposal
  *
  * @param proposalId
  * @return {Promise<*>}
@@ -177,7 +166,6 @@ async function vote(proposalId) {
 }
 
 /**
- * Change to the next status
  *
  * @return {Promise<*>}
  */
@@ -186,7 +174,6 @@ async function nextStatus() {
 }
 
 /**
- * Change to the status Start Proposals Registering 
  *
  * @return {Promise<*>}
  */
@@ -195,7 +182,6 @@ async function nextStatus() {
 }
 
 /**
- * Change to the status Start Proposals Registering 
  *
  * @return {Promise<*>}
  */
@@ -204,7 +190,6 @@ async function nextStatus() {
 }
 
 /**
- * Change to the status Start Proposals Registering 
  *
  * @return {Promise<*>}
  */
@@ -213,7 +198,6 @@ async function nextStatus() {
 }
 
 /**
- * Change to the status Start Proposals Registering 
  *
  * @return {Promise<*>}
  */
@@ -222,7 +206,6 @@ async function nextStatus() {
 }
 
 /**
- * Add a new proposal
  *
  * @param proposal
  * @return {Promise<*>}
@@ -232,7 +215,6 @@ async function addProposal(proposal) {
 }
 
 /**
- * Get a proposal
  *
  * @param proposalId
  * @return {Promise<*>}
@@ -242,7 +224,6 @@ async function getProposal(proposalId) {
 }
 
 /**
- * Return the human readable text for a workflow status
  *
  * @param workflowStatus
  * @return {string}
@@ -278,7 +259,6 @@ function getWorkflowStatusName(workflowStatus) {
 }
 
 /**
- * Retrieve all voters for the current session
  *
  * @return {Promise<*[]>}
  */
@@ -300,8 +280,6 @@ async function getVoters() {
 }
 
 /**
- * Retrieve all proposals for the current session
- * Can be filtered an address
  *
  * @param addressFrom
  * @return {Promise<*[]>}
@@ -328,14 +306,20 @@ async function getProposals(addressFrom = null) {
 }
 
 /**
- * Return the winning proposal
  *
- * @return {Promise<{description: *, proposalId: *}>}
+ * @return {Promise<*>}
  */
-async function getResults() {
-    const results = await contractInstance.methods.getResults().call();
+ async function tallyVotes() {
+    return await contractInstance.methods.tallyVotes().send({from: walletStore.getState().address});
+}
 
-    return {proposalId: results.proposalId, description: results.description, voteCount: results.voteCount};
+/**
+ *
+ */
+ async function getWinningProposalId() {
+    const winning = await contractInstance.methods.getWinningProposalId().call();
+    return {proposalId: winning.proposalId, description: winning.description, voteCount: winning.voteCount};
+
 }
 
 const subscriptions = {};
@@ -374,5 +358,6 @@ export {
     endVotingSession,
     addProposal,
     getProposals,
-    getResults
+    tallyVotes,
+    getWinningProposalId
 };

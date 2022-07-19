@@ -7,10 +7,10 @@ function UserStatus() {
 
     return (
     <div>
-        <h3>Your status(es)</h3>
+        <h3>Your role(s)</h3>
         <div className="Status">
-            <div>{isOwner ? '†' : ' '} Owner</div>
-            <div>{isVoter ? '†' : ' '} Voter</div>
+            <div>Owner {isOwner ? '┤' : ' '} </div>
+            <div>Voter {isVoter ? '┤' : ' '} </div>
         </div>
     </div>    
     );

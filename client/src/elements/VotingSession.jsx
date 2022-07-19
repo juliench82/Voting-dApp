@@ -18,18 +18,10 @@ function VotingSession() {
     }
 
     return (
-        <>
-            <div className="test">
+        <><div className="central">
             <h2>Proposals available for vote</h2>
-            Please pick up your favourite proposal.
+            Please pick up your favourite proposal!
             <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Proposal</th>
-                        <th>Vote</th>
-                    </tr>
-                </thead>
                 <tbody>
                 {proposals.map((proposal) =>
                     <tr key={proposal.id}>

@@ -33,26 +33,17 @@ function RegisteringVoters() {
         return /^0x[a-fA-F0-9]{40}$/.test(address);
     }
 
-    let allowedAccess=false;
-
     return (
         <>
             <div className="central">
-            <h2>Add a voter</h2>
+            <h2>Voter registration</h2>
             <input className="input-address" value={getInput} onChange={handleInputChange} />
             <button disabled={getDisabled} onClick={handleAddVoter}>Add voter</button>
                 <><h3>Voters whitelisted</h3>
                     <table>
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Address</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         {voters.map((voter, index) =>
                             <tr key={index}>
-                                <td>{index}</td>
                                 <td>{voter.address}</td>
                             </tr>
                         )}
@@ -62,7 +53,7 @@ function RegisteringVoters() {
         
             {voters.length === 0 &&
             <div>
-                You don't have any voter registered yet</div>
+                You don't have any voter(s) registered yet</div>
             }
             </div>
         </>

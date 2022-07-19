@@ -1,31 +1,31 @@
 import React, {useEffect, useState} from 'react';
-import {getResults} from "../utilities/contract";
+import {getWinningProposalId} from "../utilities/contract";
 
 function VotesTallied() {
     const [winningProposal, setWinningProposal] = useState(null);
 
     useEffect(() => {
         (async () => {
-            setWinningProposal(await getResults());
+            setWinningProposal(await getWinningProposalId());
         })();
     }, []);
 
     if (winningProposal === null) {
-        return <><p>No winning proposal</p></>;
+        return (<>
+        <div className="winning">
+        <h2>Oh la la</h2>
+        </div>
+        </>
+        )
     }
 
     return (
-        <>
-            <div className="winning">
-            <h2>Winning proposal</h2>
-            <p>
-                Proposal #{winningProposal.proposalId} win with {winningProposal.voteCount} vote(s) :
-            </p>
-            <p><b>{winningProposal.description}</b></p>
+        <><div className="winning">
+            <h2>The winning proposal is</h2>
+            <p>{winningProposal.description} with {winningProposal.voteCount} vote(s) !</p>
             </div>
         </>
     )
 }
 
 export default VotesTallied;
-

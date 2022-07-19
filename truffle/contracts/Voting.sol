@@ -22,10 +22,9 @@ contract Voting is Ownable {
 
     /**
      * @notice Returns the winning proposal.
-     *
      * @dev By default this will be set to 0.
      *
-     * Public visibility is set to let anyone get the winning proposal ID.
+     * Visibility is set to public to let anyone get the winning proposal ID.
      */
     uint public winningProposalId;
 
@@ -104,11 +103,6 @@ contract Voting is Ownable {
     event Voted (address voter, uint proposalId);
 
     /**
-     * @notice Event triggered when votes have been tallied.
-     */ 
-    event Winning(uint256 proposalId, string description, uint256 voteCount);
-
-    /**
      * @notice Checks if a voter is currently registered.
      * @dev Reverts if not called by a whitelisted voter's address.
      */
@@ -176,7 +170,8 @@ contract Voting is Ownable {
         workflowStatus = WorkflowStatus.VotingSessionStarted;
         emit WorkflowStatusChange(WorkflowStatus.ProposalsRegistrationEnded, WorkflowStatus.VotingSessionStarted);
     }
-    /**
+
+        /**
      * @notice Owner ends the voting session.
      * @dev Current status must be VotingSessionStarted.
      * 
@@ -186,25 +181,6 @@ contract Voting is Ownable {
         require(workflowStatus == WorkflowStatus.VotingSessionStarted, 'Voting session havent started yet');
         workflowStatus = WorkflowStatus.VotingSessionEnded;
         emit WorkflowStatusChange(WorkflowStatus.VotingSessionStarted, WorkflowStatus.VotingSessionEnded);
-    }
-
-    /**
-     * @notice Switches to the next workflow status.
-     * @dev Only owner can call the function.
-     *
-     * Emits a {WorkflowStatusChange} event.
-     */
-    function nextStatus() external onlyOwner {
-        require(workflowStatus != WorkflowStatus.VotesTallied, "Vote session has already ended");
-
-        if (workflowStatus == WorkflowStatus.VotingSessionEnded) {
-            _tallyVotes();
-        }
-
-        WorkflowStatus previousWorkflowStatus = workflowStatus;
-        workflowStatus = WorkflowStatus(uint256(previousWorkflowStatus) + 1);
-
-        emit WorkflowStatusChange(previousWorkflowStatus, workflowStatus);
     }
 
     /**
@@ -245,7 +221,7 @@ contract Voting is Ownable {
     function addProposal(string memory _description) external onlyVoter {
         require(workflowStatus == WorkflowStatus.ProposalsRegistrationStarted, 'Proposals are not allowed yet');
         require(keccak256(abi.encode(_description)) != keccak256(abi.encode("")), 'Vous ne pouvez pas ne rien proposer');
-        require(proposals.length <= 50, 'Max proposals amount reached (x50)'); // improvement
+        require(proposals.length <= 50, 'Max proposals amount reached (x50)');
 
         Proposal memory proposal;
         proposal.description = _description;
@@ -284,19 +260,6 @@ contract Voting is Ownable {
     }
 
     /**
-     * @notice Gets the winning proposal.
-     *
-     * @param proposalId           : id of the proposal.
-     * @param description           : string description of the proposal.
-     * @param voteCount             : Number of votes for a proposal.
-     */
-    function getResults() public view returns (uint256 proposalId, string memory description, uint256 voteCount) {
-        require(proposals[winningProposalId].voteCount != 0, "Session ended with no vote");
-
-        return (winningProposalId, proposals[winningProposalId].description, proposals[winningProposalId].voteCount);
-    }
-
-    /**
      * @notice Owner tallies all the votes
      * @dev Current status must be VotingSessionEnded
      *
@@ -305,12 +268,32 @@ contract Voting is Ownable {
      * Requirements:
      *
      * - `WorkflowStatus` must be at the VotingSessionEnded state.
+    * - `Max length` = 50 proposals.
      */
-    function _tallyVotes() private onlyOwner {
+    function tallyVotes() external onlyOwner {
         require(workflowStatus == WorkflowStatus.VotingSessionEnded, "Current status is not voting session ended");
+        require(proposals.length <= 50, 'Max proposals amount reached (x50)'); // security
 
-        if (proposals.length > 0 && proposals[winningProposalId].voteCount != 0) {
-            emit Winning(winningProposalId, proposals[winningProposalId].description, proposals[winningProposalId].voteCount);
+        uint _winningProposalId;
+
+        for (uint256 p = 0; p < proposals.length; p++) {
+            if (proposals[p].voteCount > proposals[_winningProposalId].voteCount) {
+                _winningProposalId = p;
+            }
         }
+        winningProposalId = _winningProposalId;
+       
+        workflowStatus = WorkflowStatus.VotesTallied;
+        emit WorkflowStatusChange(WorkflowStatus.VotingSessionEnded, WorkflowStatus.VotesTallied);
+    }
+    
+    /**
+     * @notice Gets the winning proposal Id.
+     * @dev Only owner can call this function.
+     *
+     */
+    function getWinningProposalId() public onlyOwner view returns (uint256 proposalId, string memory description, uint256 voteCount) {
+        require(workflowStatus == WorkflowStatus.VotesTallied, "Current status is not votes tallied");
+        return (winningProposalId, proposals[winningProposalId].description, proposals[winningProposalId].voteCount);   
     }
 }

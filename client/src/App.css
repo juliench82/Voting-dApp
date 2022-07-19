@@ -4,9 +4,9 @@
 
 body {
   background: #62A497;
-  background: -moz-linear-gradient(top, #62A497 0%, #62A497 70%, #F1D8A5 100%);
-  background: -webkit-linear-gradient(top, #62A497 0%, #62A497 70%, #F1D8A5 100%);
-  background: linear-gradient(to bottom, #62A497 0%, #62A497 70%, #F1D8A5 100%);
+  background: -moz-linear-gradient(top, #62A497 0%, #62A497 10%, #F1D8A5 100%);
+  background: -webkit-linear-gradient(top, #62A497 0%, #62A497 10%, #F1D8A5 100%);
+  background: linear-gradient(to bottom, #62A497 0%, #62A497 10%, #F1D8A5 100%);
   font-family: Tahoma, Geneva, sans-serif;
   font-size: 14px;
   letter-spacing: 2px;
@@ -45,14 +45,6 @@ body {
   justify-content: center;
 }
 
-.sidebar {
-  background-color: #f1d8a5;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-  width: fit-content;
-}
-
 .content {
   background-color: #f1d8a5;
   text-align: center;
@@ -83,6 +75,14 @@ body {
 .winning {
   text-align: center;
   border: 3px solid #f1d8a5;
+  background: transparent url("https://i.ibb.co/6HY8cww/kindpng-1241592.png") no-repeat scroll 50% 50%;
+  background-color: #f1d8a5;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  min-height: 600px;
+  font-weight: bold;
+  color: #11aa25;
 }
 
 .side-right {
@@ -100,6 +100,37 @@ body {
 
 .setting-btn span {
   margin-left: auto;
+}
+.central {
+  background: transparent url("https://i.ibb.co/TDQhYgh/how-do-i-vote.png") no-repeat scroll 50% 50%;
+  background-color: #f1d8a5;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  min-height: 600px;
+}
+
+.Status {
+  background-color: #ffffff5d;
+  padding: 10px;
+  margin: 0px;
+}
+
+.propended {
+  background: transparent url("https://i.ibb.co/dPYxKLw/decide-gaa0278de6-1280.png") no-repeat scroll 100% 100%;
+  background-color: #f1d8a5;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  min-height: 600px;
+}
+
+.input-address {
+  background-color: #ffffff5d;
+  height: 40px;
+  width: 500px;
+  margin: 10px;
+  box-shadow: 3px 5px 50px 0px #7c7c7c28;
 }
 
 button, a {
@@ -159,23 +190,29 @@ input {
   color: #62a497;
 }
 
-.central {
+.sidebars {
   background-color: #f1d8a5;
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
+  width: fit-content;
+  min-height: 600px;
 }
 
-.Status {
-  background-color: #b46b1870;
-  padding: 10px;
-  margin: 0px;
-}
-
-.input-address {
+.leftbar {
   background-color: #f1d8a5;
-  height: 40px;
-  width: 500px;
+  border-radius: 5px;
+  padding: 10px;
   margin: 10px;
-  box-shadow: 3px 5px 50px 0px #7c7c7c28;
+  width: fit-content;
+  min-height: 600px;
+}
+
+.sidebar {
+  background-color: #f1d8a567;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: fit-content;
+  min-height: 600px;
 }

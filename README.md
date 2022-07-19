@@ -5,8 +5,7 @@
 https://www.loom.com/share/eb3eaca2618b41748676608d3ebad007
 
 ### Le lien Github Pages
-
-https://juliench82.github.com/Voting-dApp
+https://juliench82.github.io/Voting-dApp/
 
 ## Installation
 

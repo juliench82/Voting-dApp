@@ -13,7 +13,7 @@ function RegisteringProposals() {
         (async () => {
             addProposals(await getProposals(address));
         })();
-    }, []);
+    }, );
 
     const handleAddProposal = async () => {
         await addProposal(getInput.trim());

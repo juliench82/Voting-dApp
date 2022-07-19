@@ -5,7 +5,6 @@ import contractStore from "../zustand/contract";
 function RegisteringVoters() {
     const [getInput, setInput] = useState('');
     const [getDisabled, setDisabled] = useState(true);
-
     const {voters} = contractStore(state => ({ voters: state.voters }));
     const addVoters = contractStore.getState().addVoters;
 
@@ -13,7 +12,7 @@ function RegisteringVoters() {
         (async () => {
             addVoters(await getVoters());
         })();
-    }, []);
+    }, );
 
     const handleAddVoter = async () => {
         await setVoter(getInput);
